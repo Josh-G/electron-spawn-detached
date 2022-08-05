@@ -5,6 +5,10 @@ on: [push]
 jobs:
   test:
     runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        electron: ["15", "16", "17", "18", "19", "20"]
     steps:
       - uses: actions/checkout@v3
 
@@ -12,6 +16,6 @@ jobs:
         with:
           node-version: '18.4.0'
 
-      - run: npm install
+      - run: npm install electron@${{ matrix.electron }}
 
       - run: bash ./test.sh
