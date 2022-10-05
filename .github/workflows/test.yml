@@ -8,13 +8,13 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        electron: ["15", "16", "17", "18", "19", "20", "alpha"]
+        electron: ["15", "16", "17", "18", "19", "20", "21"]
     steps:
       - uses: actions/checkout@v3
 
       - uses: actions/setup-node@v3
         with:
-          node-version: '18.4.0'
+          node-version: '18.10.0'
 
       - run: npm install electron@${{ matrix.electron }}
 
